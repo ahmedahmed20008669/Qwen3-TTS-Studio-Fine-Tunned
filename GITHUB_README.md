@@ -84,5 +84,12 @@ To maintain a perfect voice while shifting emotions, the engine uses a dual-inst
 
 ---
 
+## 🤝 Credits & Acknowledgments
+This project is an enhanced studio implementation built upon the groundbreaking work of the **Alibaba Qwen Team**. 
+
+*   **Original Repository**: [QwenLM/Qwen3-TTS](https://github.com/QwenLM/Qwen3-TTS)
+*   **Original Developers**: [Alibaba Qwen Team](https://github.com/QwenLM)
+*   **Research Paper**: [Qwen3-TTS Technical Report](https://github.com/QwenLM/Qwen3-TTS)
+
 ## ⚖️ License
-Released under the **Apache-2.0 License**. Based on the research and models by the **Alibaba Qwen Team**.
+Released under the **Apache-2.0 License**. Based on the research and models by the **Alibaba Qwen Team**. Please adhere to the original license terms when using the base models.
