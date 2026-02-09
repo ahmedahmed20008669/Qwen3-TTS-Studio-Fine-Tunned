@@ -1,87 +1,60 @@
-# Qwen3-TTS Pro: Hollywood Studio & Emotional Identity Lock 🎬🎧
+# Qwen3-TTS Pro: Cinematic Production Studio 🎬🎧
 
-![Qwen3-TTS Pro Interface](assets/studio_interface.png)
+![Studio Interface](assets/studio_interface.png)
 
 ## 👤 Main Developer
 **Ahmed Hassn** ([GitHub](https://github.com/ahmedahmed20008669))
 
 ---
 
-## 📖 Project Overview: What it Does
-This project is an advanced, production-ready implementation of the **Qwen3-TTS 12Hz 1.7B** model. It transforms the base model into a "Hollywood Studio" experience by adding a unique **Emotional Identity Lock** system. 
+## 📖 What's New: The Cinematic Pro Upgrade
+This repository has been upgraded to a **Cinematic Production Studio**. It now goes beyond simple text-to-speech by offering a full multi-character casting engine with high-fidelity control over dramatic timing and acoustic perspective.
 
-Unlike standard TTS, this implementation allows you to:
-1.  **Lock Voice Identity**: Define a consistent vocal character (accent, pitch, age) that never changes across the entire track.
-2.  **Shift Emotions Mid-Script**: Use `[Emotion]` tags to shift the delivery style (e.g., from whispering to shouting) without breaking the character's voice.
-3.  **Real-Time Rendering**: Stream audio segments instantly as they are rendered for immediate feedback.
-4.  **Auto-Save Masters**: Automatically compile and save high-fidelity `.wav` files to a local production folder.
-
----
-
-## 🔬 Technical Mathematics
-The model's performance and clarity are rooted in the **12Hz Discrete Codec Space** architecture:
-
-### 1. Acoustic Quantization (12Hz RVQ)
-The audio is not stored as waves, but as **acoustic tokens** sampled at 12Hz. This is achieved through Residual Vector Quantization (RVQ), which compresses audio into hierarchical discrete codes.
-*   **Codec 0**: Defines the coarse acoustic structure.
-*   **Refinement Layers**: Add high-frequency detail and texture.
-
-### 2. The Objective Function
-The training maximizes the log-likelihood of the next acoustic token:
-$$L_{total} = L_{cross\_entropy} + 0.3 \times L_{sub\_talker}$$
-This dual-loss approach ensures that both the primary acoustic stream and the sub-token predictions are highly accurate, resulting in human-like prosody.
+### 🌟 Core Cinematic Features:
+1.  **Multi-Character Casting**: Define a cast of characters in JSON format. The engine automatically switches voices based on your script.
+2.  **Screenplay Pro Parsing**: Supports the `[Character - Voice, Emotion]` tag format for granular, inline directing.
+3.  **The Interruption Engine**: Handles the `—` (em-dash) naturally. It abruptly cuts the currently speaking character and speeds up the next character's entry for realistic "cutting off" dialogue.
+4.  **Acoustic Solo Mode**: Use `(Solo)` to trigger a **close-mic proximity effect**. This makes internal monologues or whispers sound intimate and "inside the head" rather than projected.
 
 ---
 
-## 🛠️ The Fine-Tuning Process
-This studio implementation utilizes a specialized **Supervised Fine-Tuning (SFT)** workflow to achieve its clinical speech accuracy:
-
-1.  **Speaker Injection**: We extract a high-dimensional **Speaker Embedding** from reference audio and inject it into reserved weight slot **Index 3000** of the `codec_embedding` layer.
-2.  **Data Tokenization**: Ground-truth audio is converted into 12Hz indices using a specialized tokenizer before training.
-3.  **Bfloat16 Optimization**: Training is conducted in `bfloat16` mixed precision using the `AdamW` optimizer with a learning rate of `2e-5`, ensuring extreme stability and preventing voice character "drift."
+## 💡 Creative Ideas & Use Cases
+The Cinematic Pro Studio opens up professional-grade audio production for:
+*   **Audiobook Dramatization**: Render entire scenes with different narrators and character voices in one pass.
+*   **NPC Dialogue Systems**: Create realistic, interrupted conversations for game characters.
+*   **Podcast Ads & Skits**: Direct multi-voice skits with precise emotional shifts.
+*   **Shadow Coaching**: Use internal monologues `(Solo)` to contrast what a character says vs. what they think.
+*   **Dynamic Documentaries**: Switch between formal narration and emotional "eye-witness" quotes seamlessly.
 
 ---
 
-## 💻 Code Architecture
-The project is built for high-performance inference on local hardware (RTX 40-series):
+## 🔬 Technical Deep Dive
+### 1. The Interruption Mechanism
+When the parser detects an em-dash (`—`), it applies a 150ms hard-cut to the generated audio buffer and reduces the inter-segment silence from 400ms to 100ms. This simulates the overlapping response of a real conversation.
 
-*   **`app.py`**: The main Studio interface, featuring the **Emotional Identity Lock** engine and the **Smart ETA** progress bar.
-*   **`qwen_tts/`**: The core library containing the model wrappers and 12Hz quantization logic.
-*   **`finetuning/`**: The complete SFT suite, including `sft_12hz.py` and data preparation scripts.
-*   **Optimizations**: Uses **SDPA (Scaled Dot Product Attention)** and **FlashAttention-2** to minimize VRAM usage and maximize rendering speed.
+### 2. Proximity Effect (Solo)
+The `(Solo)` marker injects specific acoustic instructions into the Qwen3-TTS prompt, requesting lower gain-variance and increased breathiness, simulating a voice actor standing inches from a cardioid microphone.
 
 ---
 
 ## 🎮 Installation & Quickstart
 
-### 1. Clone the repository
+### 1. Clone & Setup
 ```bash
 git clone https://github.com/ahmedahmed20008669/Qwen3-TTS-Studio-Fine-Tunned.git
 cd Qwen3-TTS-Studio-Fine-Tunned
-```
-
-### 2. Install dependencies
-We recommend using a virtual environment (Python 3.10+):
-```bash
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 3. Launch the Studio
+### 2. Launch the Studio
 ```bash
 python app.py
 ```
-Open `http://127.0.0.1:8000` in your browser once the models are loaded.
 
----
-
-## 🎭 The "Identity Lock" Workflow
-1.  **Character Setup**: Describe your character in the **Voice Identity** field (e.g., "A gentle British woman").
-2.  **Dynamic Scripting**: Add emotion tags directly in your text:
-    *   `[Whispering] I'm so glad you're here. [Pause] [Excited] Tonight is going to be amazing!`
-3.  **Instant Rendering**: Hit render and watch the segments process with live streaming.
-4.  **Auto-Export**: Check the `/outputs` folder for your high-fidelity `.wav` file.
+### 3. Directing Your Scene
+1.  **Define Your Cast**: Add characters to the JSON panel (e.g., `Elena`, `Julian`, `Marcus`).
+2.  **Write the Script**: Use tags like `[Elena - Sexy, Cold]` and markers like `(Solo)` or `—`.
+3.  **Render**: Get individual segment previews and a final compiled master.
 
 ---
 
