@@ -1,0 +1,8 @@
+torch
+gradio
+numpy
+soundfile
+qwen-tts
+accelerate
+transformers
+safetensors

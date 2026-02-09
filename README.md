@@ -1,6 +1,6 @@
 # Qwen3-TTS Pro: Hollywood Studio & Emotional Identity Lock 🎬🎧
 
-![Qwen3-TTS Pro Interface](C:\Users\ahmed\.gemini\antigravity\brain\b1421854-451d-4f12-8a71-8333ce6495c9\media__1770594598839.png)
+![Qwen3-TTS Pro Interface](assets/studio_interface.png)
 
 ## 👤 Main Developer
 **Ahmed Hassn** ([GitHub](https://github.com/ahmedahmed20008669))
@@ -52,19 +52,36 @@ The project is built for high-performance inference on local hardware (RTX 40-se
 
 ---
 
-## 🎬 How to Use
-1.  **Installation**:
-    ```bash
-    pip install torch gradio numpy soundfile qwen-tts accelerate
-    ```
-2.  **Launch the Studio**:
-    ```bash
-    python app.py
-    ```
-3.  **Directing Your Voice**:
-    *   **In the "Voice Identity" box**: Describe the character (e.g., "A deep, raspy British male").
-    *   **In the "Script" box**: Add emotion tags to shift delivery (e.g., `[Whispering] Hello... [Pause] [Angry] I said HELLO!`).
-4.  **Retrieve Audio**: Find your final takes in the `/outputs` folder.
+## 🎮 Installation & Quickstart
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/ahmedahmed20008669/Qwen3-TTS-Studio-Fine-Tunned.git
+cd Qwen3-TTS-Studio-Fine-Tunned
+```
+
+### 2. Install dependencies
+We recommend using a virtual environment (Python 3.10+):
+```bash
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### 3. Launch the Studio
+```bash
+python app.py
+```
+Open `http://127.0.0.1:8000` in your browser once the models are loaded.
+
+---
+
+## 🎭 The "Identity Lock" Workflow
+1.  **Character Setup**: Describe your character in the **Voice Identity** field (e.g., "A gentle British woman").
+2.  **Dynamic Scripting**: Add emotion tags directly in your text:
+    *   `[Whispering] I'm so glad you're here. [Pause] [Excited] Tonight is going to be amazing!`
+3.  **Instant Rendering**: Hit render and watch the segments process with live streaming.
+4.  **Auto-Export**: Check the `/outputs` folder for your high-fidelity `.wav` file.
 
 ---
 
