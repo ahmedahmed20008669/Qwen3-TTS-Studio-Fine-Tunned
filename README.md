@@ -1,65 +1,39 @@
-# Qwen3-TTS Pro: Cinematic Production Studio 🎬🎧
+# Qwen3-TTS Studio Suite 🎧🚀
 
-![Studio Interface](assets/studio_interface.png)
+Welcome to the **Qwen3-TTS Studio**, a collection of professional-grade speech synthesis tools powered by the 12Hz RVQ 1.7B model. This repository contains two distinct studio projects tailored for different production needs.
 
 ## 👤 Main Developer
 **Ahmed Hassn** ([GitHub](https://github.com/ahmedahmed20008669))
 
 ---
 
-## 📖 What's New: The Cinematic Pro Upgrade
-This repository has been upgraded to a **Cinematic Production Studio**. It now goes beyond simple text-to-speech by offering a full multi-character casting engine with high-fidelity control over dramatic timing and acoustic perspective.
+## 📂 Project Navigation
 
-### 🌟 Core Cinematic Features:
-1.  **Multi-Character Casting**: Define a cast of characters in JSON format. The engine automatically switches voices based on your script.
-2.  **Screenplay Pro Parsing**: Supports the `[Character - Voice, Emotion]` tag format for granular, inline directing.
-3.  **The Interruption Engine**: Handles the `—` (em-dash) naturally. It abruptly cuts the currently speaking character and speeds up the next character's entry for realistic "cutting off" dialogue.
-4.  **Acoustic Solo Mode**: Use `(Solo)` to trigger a **close-mic proximity effect**. This makes internal monologues or whispers sound intimate and "inside the head" rather than projected.
+### 1. [Emotional Identity Lock (Root)](app.py)
+The original studio engine focused on **Voice Character Consistency**.
+*   **Best for**: Podcasts, Narrations, and single-character audiobooks.
+*   **Feature**: Defines one voice identity and shifts emotions mid-script without the character "drifting."
+*   **How to Run**: `python app.py` (from the root).
 
----
-
-## 💡 Creative Ideas & Use Cases
-The Cinematic Pro Studio opens up professional-grade audio production for:
-*   **Audiobook Dramatization**: Render entire scenes with different narrators and character voices in one pass.
-*   **NPC Dialogue Systems**: Create realistic, interrupted conversations for game characters.
-*   **Podcast Ads & Skits**: Direct multi-voice skits with precise emotional shifts.
-*   **Shadow Coaching**: Use internal monologues `(Solo)` to contrast what a character says vs. what they think.
-*   **Dynamic Documentaries**: Switch between formal narration and emotional "eye-witness" quotes seamlessly.
+### 2. [Cinematic Pro-Studio (Sub-Project)](Cinematic-Studio/)
+A high-end **Multi-Character Casting Engine** for complex dramatic productions.
+*   **Best for**: Audio Dramas, NPC Conversations, and Screenplays.
+*   **Feature**: Multi-character casting, em-dash (`—`) interruption handling, and `(Solo)` internal monologues with proximity effect.
+*   **How to Run**: `cd Cinematic-Studio && python app.py`.
 
 ---
 
-## 🔬 Technical Deep Dive
-### 1. The Interruption Mechanism
-When the parser detects an em-dash (`—`), it applies a 150ms hard-cut to the generated audio buffer and reduces the inter-segment silence from 400ms to 100ms. This simulates the overlapping response of a real conversation.
-
-### 2. Proximity Effect (Solo)
-The `(Solo)` marker injects specific acoustic instructions into the Qwen3-TTS prompt, requesting lower gain-variance and increased breathiness, simulating a voice actor standing inches from a cardioid microphone.
-
----
-
-## 🎮 Installation & Quickstart
-
-### 1. Clone & Setup
+## 🛠️ Installation
 ```bash
 git clone https://github.com/ahmedahmed20008669/Qwen3-TTS-Studio-Fine-Tunned.git
 cd Qwen3-TTS-Studio-Fine-Tunned
 pip install -r requirements.txt
 ```
 
-### 2. Launch the Studio
-```bash
-python app.py
-```
-
-### 3. Directing Your Scene
-1.  **Define Your Cast**: Add characters to the JSON panel (e.g., `Elena`, `Julian`, `Marcus`).
-2.  **Write the Script**: Use tags like `[Elena - Sexy, Cold]` and markers like `(Solo)` or `—`.
-3.  **Render**: Get individual segment previews and a final compiled master.
-
 ---
 
 ## 🤝 Credits
-Built upon the foundational models and research by the [Alibaba Qwen Team](https://github.com/QwenLM/Qwen3-TTS). Special thanks to the open-source community for the 12Hz quantization breakthroughs.
+Built upon the foundational models and research by the [Alibaba Qwen Team](https://github.com/QwenLM/Qwen3-TTS).
 
 ## ⚖️ License
 Released under the **Apache-2.0 License**.
